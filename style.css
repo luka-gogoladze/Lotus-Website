@@ -1942,6 +1942,43 @@ a {
     letter-spacing: 0.5px;
 }
 
+.btn-audio-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-thin);
+    border-radius: 20px;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    font-family: var(--font-nino-bold);
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    outline: none;
+}
+
+.btn-audio-toggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+    border-color: var(--border-active);
+}
+
+.btn-audio-toggle.muted {
+    opacity: 0.6;
+    color: var(--text-muted);
+}
+
+.btn-audio-toggle i {
+    font-size: 1.1rem;
+    color: var(--primary);
+}
+
+.btn-audio-toggle.muted i {
+    color: var(--text-muted);
+}
+
 .breathing-widget-display {
     display: flex;
     align-items: center;

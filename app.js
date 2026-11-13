@@ -413,56 +413,67 @@ document.addEventListener('DOMContentLoaded', () => {
         renderDots();
         updateSliderPosition();
         startAutoplay();
-
-        // Audio preview buttons inside slides
-        const playButtons = document.querySelectorAll('.btn-play-preview');
-        playButtons.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const title = btn.getAttribute('data-title') || 'მედიტაცია';
-                const isPlaying = btn.classList.toggle('is-playing');
-                const icon = btn.querySelector('i');
-                const text = btn.querySelector('span');
-
-                if (isPlaying) {
-                    if (icon) icon.textContent = 'pause_circle_filled';
-                    if (text) text.textContent = 'პაუზა';
-                    playZenTone(528, 2.5, 'triangle');
-                    showToast('აუდიო გზამკვლევი ჩაირთო', `„${title}“ — ისიამოვნეთ სიმშვიდით.`, 'volume_up');
-                } else {
-                    if (icon) icon.textContent = 'play_circle_filled';
-                    if (text) text.textContent = 'მოსმენა';
-                    showToast('აუდიო შეჩერებულია', `„${title}“ დროებით დაპაუზდა.`, 'pause');
-                }
-            });
-        });
     }
 
     /* ==========================================================================
-       6. Interactive Breathing Ritual Widget
+       6. Interactive Breathing Ritual Widget (With Native App Sounds)
        ========================================================================== */
     const startBreathingBtn = document.getElementById('startBreathingBtn');
     const stopBreathingBtn = document.getElementById('stopBreathingBtn');
+    const breathingAudioToggle = document.getElementById('breathingAudioToggle');
     const breathingOrb = document.getElementById('breathingOrb');
     const breathingPhase = document.getElementById('breathingPhase');
     const breathingTimer = document.getElementById('breathingTimer');
     const breathingSubtext = document.getElementById('breathingSubtext');
     const breathingCycleBadge = document.getElementById('breathingCycleBadge');
 
+    // Audio elements loaded directly from app assets
+    const bgAudio = new Audio('assets/audio/Sub-Bass Hiss.mp3');
+    bgAudio.loop = true;
+    bgAudio.volume = 0.35;
+
+    const breathInAudio = new Audio('assets/audio/breath-in.wav');
+    breathInAudio.volume = 0.75;
+
+    const breathOutAudio = new Audio('assets/audio/breath-out.wav');
+    breathOutAudio.volume = 0.75;
+
     if (startBreathingBtn && stopBreathingBtn && breathingOrb) {
         let isBreathingActive = false;
+        let isMusicEnabled = true;
         let breathingInterval = null;
         let countdownSeconds = 4;
         let currentStepIndex = 0;
         let completedCycles = 0;
         const totalTargetCycles = 4;
 
+        // Audio toggle handler
+        if (breathingAudioToggle) {
+            breathingAudioToggle.addEventListener('click', () => {
+                isMusicEnabled = !isMusicEnabled;
+                const icon = breathingAudioToggle.querySelector('i');
+                const text = breathingAudioToggle.querySelector('.audio-toggle-text');
+                
+                if (isMusicEnabled) {
+                    breathingAudioToggle.classList.remove('muted');
+                    if (icon) icon.textContent = 'volume_up';
+                    if (text) text.textContent = 'მუსიკა: ჩართულია';
+                    if (isBreathingActive) bgAudio.play().catch(() => {});
+                } else {
+                    breathingAudioToggle.classList.add('muted');
+                    if (icon) icon.textContent = 'volume_off';
+                    if (text) text.textContent = 'მუსიკა: გამორთულია';
+                    bgAudio.pause();
+                }
+            });
+        }
+
         // 4-4-4 Box Breathing Phases
         const phases = [
-            { name: 'ჩაისუნთქე', class: 'inhale', sub: 'ნაზად ცხვირით', freq: 440 },
-            { name: 'შეიკავე', class: 'hold', sub: 'დააკავე ფილტვებში', freq: 520 },
-            { name: 'ამოისუნთქე', class: 'exhale', sub: 'სრულად პირით', freq: 380 },
-            { name: 'შეიკავე', class: 'hold', sub: 'დაისვენე მომდევნო ციკლამდე', freq: 440 }
+            { name: 'ჩაისუნთქე', class: 'inhale', sub: 'ნაზად ცხვირით' },
+            { name: 'შეიკავე', class: 'hold', sub: 'დააკავე ფილტვებში' },
+            { name: 'ამოისუნთქე', class: 'exhale', sub: 'სრულად პირით' },
+            { name: 'შეიკავე', class: 'hold', sub: 'დაისვენე მომდევნო ციკლამდე' }
         ];
 
         const setBreathingPhase = (index) => {
@@ -470,7 +481,15 @@ document.addEventListener('DOMContentLoaded', () => {
             breathingOrb.className = `breathing-orb ${phase.class}`;
             if (breathingPhase) breathingPhase.textContent = phase.name;
             if (breathingSubtext) breathingSubtext.textContent = phase.sub;
-            playZenTone(phase.freq, 0.8, 'sine');
+
+            // Trigger voice cues from app assets
+            if (phase.class === 'inhale') {
+                breathInAudio.currentTime = 0;
+                breathInAudio.play().catch(() => {});
+            } else if (phase.class === 'exhale') {
+                breathOutAudio.currentTime = 0;
+                breathOutAudio.play().catch(() => {});
+            }
         };
 
         const tickBreathing = () => {
@@ -507,16 +526,30 @@ document.addEventListener('DOMContentLoaded', () => {
             stopBreathingBtn.style.display = 'inline-flex';
             if (breathingCycleBadge) breathingCycleBadge.textContent = `ციკლი: 0 / ${totalTargetCycles}`;
 
+            // Play background music if enabled
+            if (isMusicEnabled) {
+                bgAudio.currentTime = 0;
+                bgAudio.play().catch((e) => console.log('Background music autoplay prevented', e));
+            }
+
             setBreathingPhase(0);
             if (breathingTimer) breathingTimer.textContent = countdownSeconds;
 
             breathingInterval = setInterval(tickBreathing, 1000);
-            showToast('სუნთქვის რიტუალი დაიწყო', 'მიჰყევით წრის პულსაციას და დაისვენეთ.', 'spa');
+            showToast('სუნთქვის რიტუალი დაიწყო', 'მიჰყევით ხმოვან მითითებებსა და წრის პულსაციას.', 'spa');
         };
 
         const stopBreathingSession = () => {
             isBreathingActive = false;
             if (breathingInterval) clearInterval(breathingInterval);
+
+            // Pause and reset all audio
+            bgAudio.pause();
+            bgAudio.currentTime = 0;
+            breathInAudio.pause();
+            breathInAudio.currentTime = 0;
+            breathOutAudio.pause();
+            breathOutAudio.currentTime = 0;
 
             breathingOrb.className = 'breathing-orb';
             if (breathingPhase) breathingPhase.textContent = 'მზად ხარ?';
