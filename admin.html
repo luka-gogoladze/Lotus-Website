@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOTUS — ადმინ პანელი</title>
+    <meta name="description" content="LOTUS აპლიკაციის წესებისა და პარამეტრების მართვის ადმინ პანელი.">
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="assets/images/icon.png">
+    <!-- Supabase JS Client -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        .admin-container {
+            max-width: 900px;
+            margin: 120px auto 80px;
+            padding: 0 24px;
+        }
+        .admin-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 28px;
+            padding: 40px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+        .admin-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .admin-subtitle {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+            margin-bottom: 36px;
+        }
+        .form-group {
+            margin-bottom: 28px;
+        }
+        .form-label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #d3bcf7;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+        }
+        .form-desc {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 10px;
+        }
+        .form-control {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 16px;
+            color: #fff;
+            font-size: 1rem;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .form-control:focus {
+            border-color: #d3bcf7;
+        }
+        textarea.form-control {
+            min-height: 250px;
+            resize: vertical;
+            line-height: 1.6;
+        }
+        .toggle-group {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 52px;
+            height: 28px;
+        }
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #313033;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #d3bcf7;
+        }
+        input:checked + .slider:before {
+            transform: translateX(24px);
+            background-color: #0a090c;
+        }
+        .btn-save {
+            width: 100%;
+            background: #d3bcf7;
+            color: #0a090c;
+            border: none;
+            padding: 18px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 99px;
+            cursor: pointer;
+            transition: transform 0.2s, opacity 0.2s;
+            margin-top: 20px;
+        }
+        .btn-save:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+        .btn-save:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .status-alert {
+            display: none;
+            padding: 16px;
+            border-radius: 14px;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+        .status-success {
+            background: rgba(168, 240, 180, 0.15);
+            border: 1px solid rgba(168, 240, 180, 0.4);
+            color: #a8f0b4;
+        }
+        .status-error {
+            background: rgba(255, 107, 107, 0.15);
+            border: 1px solid rgba(255, 107, 107, 0.4);
+            color: #ff6b6b;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="navbar scrolled">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <i class="material-icons logo-icon">filter_vintage</i>
+                <span class="logo-text">LOTUS ADM</span>
+            </a>
+            <div class="nav-actions">
+                <a href="index.html" class="btn-minimal">ვებსაიტზე დაბრუნება</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="admin-container">
+        <div class="admin-card">
+            <h1 class="admin-title">
+                <i class="material-icons" style="color: #d3bcf7;">admin_panel_settings</i>
+                აპლიკაციის მართვის პანელი
+            </h1>
+            <p class="admin-subtitle">შეგიძლიათ შეცვალოთ წესები და პირობები, აპლიკაციის მინიმალური ვერსია (Force Update) და გადახდის სისტემა.</p>
+
+            <div id="statusAlert" class="status-alert"></div>
+
+            <form id="adminForm">
+                <!-- Minimum Version -->
+                <div class="form-group">
+                    <label class="form-label">მინიმალური ვერსია (Min App Version)</label>
+                    <p class="form-desc">თუ მომხმარებელს აქვს ამ ვერსიაზე დაბალი აპი, გამოუჩნდება დაბლოკვის ბანერი "განაახლეთ აპლიკაცია".</p>
+                    <input type="text" id="minAppVersion" class="form-control" placeholder="მაგ: 2" required>
+                </div>
+
+                <!-- Payment Enabled Toggle -->
+                <div class="form-group">
+                    <div class="toggle-group">
+                        <div>
+                            <span class="form-label" style="margin: 0;">პრემიუმ მოთხოვნა (Paywall)</span>
+                            <p class="form-desc" style="margin: 4px 0 0;">ჩართულია თუ გამორთულია პრემიუმის შეზღუდვები აპლიკაციაში.</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="isPaymentEnabled" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Terms & Conditions -->
+                <div class="form-group">
+                    <label class="form-label">წესები და პირობები (Terms & Conditions)</label>
+                    <p class="form-desc">ეს ტექსტი ავტომატურად განახლდება აპლიკაციაში რეგისტრაციისას.</p>
+                    <textarea id="termsContent" class="form-control" placeholder="დაწერეთ წესები და პირობები აქ..."></textarea>
+                </div>
+
+                <button type="submit" id="saveBtn" class="btn-save">
+                    <span>ცვლილებების შენახვა</span>
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        const SUPABASE_URL = 'https://bwvddnacelnzlawezkeg.supabase.co';
+        const SUPABASE_ANON_KEY = 'sb_publishable_yxtdskUofxYz7YOrnKvaFw_5Etv43II';
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        const form = document.getElementById('adminForm');
+        const minAppVersionInput = document.getElementById('minAppVersion');
+        const isPaymentEnabledInput = document.getElementById('isPaymentEnabled');
+        const termsContentInput = document.getElementById('termsContent');
+        const saveBtn = document.getElementById('saveBtn');
+        const statusAlert = document.getElementById('statusAlert');
+
+        function showMessage(msg, isError = false) {
+            statusAlert.textContent = msg;
+            statusAlert.className = 'status-alert ' + (isError ? 'status-error' : 'status-success');
+            statusAlert.style.display = 'block';
+            setTimeout(() => {
+                statusAlert.style.display = 'none';
+            }, 4000);
+        }
+
+        async function checkAdminAuth() {
+            const { data: { session } } = await supabase.auth.getSession();
+            if (!session) {
+                showMessage('წვდომა უარყოფილია: გთხოვთ გაიაროთ ავტორიზაცია ადმინისტრატორის ანგარიშით.', true);
+                saveBtn.disabled = true;
+                return false;
+            }
+            const { data: profile } = await supabase.from('profiles').select('is_admin').eq('id', session.user.id).single();
+            if (!profile || !profile.is_admin) {
+                showMessage('წვდომა უარყოფილია: თქვენს ანგარიშს არ აქვს ადმინისტრატორის უფლებები.', true);
+                saveBtn.disabled = true;
+                return false;
+            }
+            return true;
+        }
+
+        async function loadConfig() {
+            try {
+                const isAdmin = await checkAdminAuth();
+                if (!isAdmin) return;
+
+                const { data, error } = await supabase.from('app_config').select('*');
+                if (error) throw error;
+
+                if (data && Array.isArray(data)) {
+                    data.forEach(item => {
+                        if (item.key === 'min_app_version') minAppVersionInput.value = item.value || '2';
+                        if (item.key === 'is_payment_enabled') isPaymentEnabledInput.checked = (item.value === true);
+                        if (item.key === 'terms_and_conditions') termsContentInput.value = item.value || '';
+                    });
+                }
+            } catch (err) {
+                console.error(err);
+                showMessage('მონაცემების ჩატვირთვა ვერ მოხერხდა: ' + err.message, true);
+            }
+        }
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const isAdmin = await checkAdminAuth();
+            if (!isAdmin) return;
+
+            saveBtn.disabled = true;
+            saveBtn.innerHTML = 'ინახება...';
+
+            try {
+                const updates = [
+                    { key: 'min_app_version', value: minAppVersionInput.value.trim() || '2' },
+                    { key: 'is_payment_enabled', value: isPaymentEnabledInput.checked },
+                    { key: 'terms_and_conditions', value: termsContentInput.value.trim() }
+                ];
+
+                const { error } = await supabase.from('app_config').upsert(updates, { onConflict: 'key' });
+                if (error) throw error;
+
+                showMessage('✓ პარამეტრები წარმატებით შენახულია!');
+            } catch (err) {
+                console.error(err);
+                showMessage('შეცდომა შენახვისას: ' + err.message, true);
+            } finally {
+                saveBtn.disabled = false;
+                saveBtn.innerHTML = '<span>ცვლილებების შენახვა</span>';
+            }
+        });
+
+        loadConfig();
+    </script>
+</body>
+</html>

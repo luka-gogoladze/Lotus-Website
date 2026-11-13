@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOTUS — შენი ციფრული თავშესაფარი</title>
+    <meta name="description" content="მედიტაცია, სუნთქვა და ძილი. იპოვე სიმშვიდე მინიმალისტურ და პერსონალურ გარემოში.">
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="assets/images/icon.png">
+</head>
+<body>
+
+    <!-- Tactile Film Grain Texture Overlay -->
+    <div class="grain-overlay"></div>
+
+    <!-- Background Particles Container -->
+    <div class="particles-container" id="particlesContainer"></div>
+
+    <!-- Ambient Atmospheric Glows -->
+    <div class="glow-container">
+        <div class="blob blob-purple" id="blobPurple"></div>
+        <div class="blob blob-pink" id="blobPink"></div>
+    </div>
+
+    <!-- Editorial Navigation -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <i class="material-icons logo-icon">filter_vintage</i>
+                <span class="logo-text">LOTUS</span>
+            </a>
+            
+            <nav class="nav-menu" id="navMenu">
+                <a href="#features" class="nav-link">ფილოსოფია</a>
+                <a href="#rhythm-section" class="nav-link">რიტმი</a>
+                <a href="#pricing" class="nav-link">ტარიფები</a>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="#download" class="btn-minimal">ჩამოტვირთვა</a>
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+                    <i class="material-icons">menu</i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Editorial Hero Section -->
+        <section class="hero-section" id="hero">
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <p class="hero-tagline">სამყარო, სადაც გონება ისვენებს</p>
+                    <h1 class="hero-title">
+                        შენი სიმშვიდე <br>
+                        <span class="gradient-text">ყოველ მომენტში</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        მედიტაცია, სუნთქვა, ძილი. შექმენი შენი ყოველდღიური მენტალური ჰიგიენის რიტუალი და დაუბრუნდი შინაგან წონასწორობას.
+                    </p>
+                    <div class="hero-ctas">
+                        <a href="#download" class="btn btn-primary btn-glow">
+                            <span>დაიწყე მოგზაურობა</span>
+                        </a>
+                        <a href="#rhythm-section" class="btn btn-secondary">
+                            <span>გაიგე მეტი</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-mockup-wrapper">
+                    <!-- Minimalist Tilted Phone Mockup -->
+                    <div class="phone-mockup">
+                        <div class="phone-speaker"></div>
+                        <div class="phone-screen">
+                            <div class="phone-header">
+                                <div class="time">19:45</div>
+                                <div class="icons">
+                                    <i class="material-icons">signal_cellular_4_bar</i>
+                                    <i class="material-icons">wifi</i>
+                                    <i class="material-icons">battery_std</i>
+                                </div>
+                            </div>
+                            
+                            <!-- Real App Screen Layout -->
+                            <div class="app-container">
+                                <!-- Top Bar -->
+                                <div class="app-top-bar">
+                                    <div class="app-user-profile">
+                                        <div class="app-avatar-wrapper">
+                                            <i class="material-icons">account_circle</i>
+                                        </div>
+                                        <div class="app-user-meta">
+                                            <span class="app-greeting">საღამო მშვიდობისა,</span>
+                                            <span class="app-username">ლუკა</span>
+                                        </div>
+                                    </div>
+                                    <div class="app-streak-pill">
+                                        <i class="material-icons active">filter_vintage</i>
+                                        <span class="app-streak-count">5</span>
+                                    </div>
+                                </div>
+
+                                <!-- Mode Dropdown selector -->
+                                <div class="app-mode-selector">
+                                    <i class="material-icons mode-icon">self_improvement</i>
+                                    <span class="mode-text">მედიტაცია</span>
+                                    <i class="material-icons arrow-icon">keyboard_arrow_down</i>
+                                </div>
+
+                                <!-- Central Interactive Ring Tracker Area -->
+                                <div class="app-tracker-area">
+                                    <div class="tracker-background-glow"></div>
+                                    <!-- SVG Progress circle -->
+                                    <svg viewBox="0 0 120 120" class="tracker-circle-svg">
+                                        <circle cx="60" cy="60" r="52" class="tracker-track-bg" />
+                                        <circle cx="60" cy="60" r="52" class="tracker-track-progress" />
+                                    </svg>
+                                    <div class="tracker-center-button">
+                                        <i class="material-icons play-icon">play_arrow</i>
+                                        <span class="play-text">დაწყება</span>
+                                    </div>
+                                </div>
+
+                                <!-- Daily Journey Plan Scroll Container -->
+                                <div class="app-journey-plan">
+                                    <h4 class="journey-header">დღის გეგმა</h4>
+                                    <div class="journey-timeline">
+                                        <div class="journey-line"></div>
+                                        
+                                        <!-- Journey Steps -->
+                                        <div class="journey-step completed">
+                                            <div class="step-icon-circle" style="background-color: rgba(255, 174, 221, 0.12); border-color: rgba(255, 174, 221, 0.25);">
+                                                <i class="material-icons" style="color: #ffaedd; font-size: 0.95rem;">mood</i>
+                                            </div>
+                                            <div class="step-details">
+                                                <h5>დილის განწყობა</h5>
+                                                <p>შესრულებულია</p>
+                                            </div>
+                                            <i class="material-icons step-check">check_circle</i>
+                                        </div>
+
+                                        <div class="journey-step">
+                                            <div class="step-icon-circle" style="background-color: rgba(168, 199, 250, 0.12); border-color: rgba(168, 199, 250, 0.25);">
+                                                <i class="material-icons" style="color: #a8c7fa; font-size: 0.95rem;">auto_stories</i>
+                                            </div>
+                                            <div class="step-details">
+                                                <h5>დღის საკითხავი</h5>
+                                                <p>გაიგე მეტი შენს ემოციებზე</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="journey-step">
+                                            <div class="step-icon-circle" style="background-color: rgba(211, 188, 247, 0.12); border-color: rgba(211, 188, 247, 0.25);">
+                                                <i class="material-icons" style="color: #d3bcf7; font-size: 0.95rem;">nightlight_round</i>
+                                            </div>
+                                            <div class="step-details">
+                                                <h5>საღამოს განტვირთვა</h5>
+                                                <p>5 წუთი საკუთარი თავისთვის</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Editorial Features Grid Section -->
+        <section class="features-section" id="features">
+            <div class="container">
+                <div class="section-intro">
+                    <h2 class="section-title-large">დიზაინი, რომელიც <br><span class="gradient-text">გამშვიდებს</span></h2>
+                    <p class="section-lead">ყოველი დეტალი აპლიკაციაში შექმნილია მენტალური ფოკუსისა და დასვენებისთვის. ჩვენ უარი ვთქვით ხმაურიან ელემენტებზე.</p>
+                </div>
+
+                <div class="features-editorial-grid">
+                    <!-- Feature 1 -->
+                    <div class="editorial-card">
+                        <span class="card-num">01</span>
+                        <div class="card-body">
+                            <h3 class="card-heading">მართვადი მედიტაციები</h3>
+                            <p class="card-text">გონების გათავისუფლება ქართულენოვანი ხმოვანი გზამკვლევებით. თითოეული სესია მორგებულია შენს მიზნებსა და განწყობაზე.</p>
+                        </div>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div class="editorial-card">
+                        <span class="card-num">02</span>
+                        <div class="card-body">
+                            <h3 class="card-heading">სუნთქვის რიტმი</h3>
+                            <p class="card-text">მარტივი და მძლავრი ტექნიკა სტრესის მყისიერი მართვისთვის. დააბალანსე ნერვული სისტემა რიტმული ვიზუალით.</p>
+                        </div>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div class="editorial-card">
+                        <span class="card-num">03</span>
+                        <div class="card-body">
+                            <h3 class="card-heading">ძილის სივრცე</h3>
+                            <p class="card-text">ბუნების აკუსტიკური პეიზაჟები და სპეციალური ძილისწინა ისტორიები, რომლებიც დაგეხმარება მშვიდად გადასვლაში ძილის ფაზაში.</p>
+                        </div>
+                    </div>
+
+                    <!-- Feature 4 -->
+                    <div class="editorial-card">
+                        <span class="card-num">04</span>
+                        <div class="card-body">
+                            <h3 class="card-heading">ლოტუსის აყვავება</h3>
+                            <p class="card-text">ყოველდღიური პატარა ნაბიჯები აშენებს დიდ ჩვევებს. შეინარჩუნე უწყვეტობა, აკონტროლე პროგრესი და დაინახე შენი ლოტუსის ზრდა.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Asymmetric Daily Rhythm Section (Static Visual) -->
+        <section class="rhythm-section" id="rhythm-section">
+            <div class="container rhythm-container">
+                <div class="rhythm-info">
+                    <p class="section-label">დღის ციკლი</p>
+                    <h2 class="section-title">Lotos შენს <br><span class="gradient-text">ყოველდღიურობაში</span></h2>
+                    <p class="section-subtitle">
+                        აპლიკაცია გთავაზობს პერსონალიზებულ რიტუალებს დღის სხვადასხვა მონაკვეთისთვის. ის იზრდება და იცვლება შენს რეჟიმთან ერთად.
+                    </p>
+                    
+                    <div class="rhythm-timeline">
+                        <div class="timeline-item">
+                            <span class="timeline-time">08:00</span>
+                            <div class="timeline-content">
+                                <h4>დილის ენერგია</h4>
+                                <p>მოკლე, გამომაფხიზლებელი სუნთქვის ვარჯიში პოზიტიური დღის დასაწყებად.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-time">14:00</span>
+                            <div class="timeline-content">
+                                <h4>შუადღის ფოკუსი</h4>
+                                <p>მედიტაცია გონებრივი დაღლილობის მოსახსნელად და კონცენტრაციის აღსადგენად.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-time">22:30</span>
+                            <div class="timeline-content">
+                                <h4>ძილის რიტუალი</h4>
+                                <p>ბუნების აკუსტიკური პეიზაჟები და სპეციალური ძილისწინა ისტორიები ღრმა დასვენებისთვის.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rhythm-mockup-panel">
+                    <!-- Static High-Fidelity App Progress Chart Mockup -->
+                    <div class="progress-chart-card glass">
+                        <div class="card-header-compact">
+                            <span class="card-title-compact">პროგრესის ანალიტიკა</span>
+                            <i class="material-icons card-icon-compact">insert_chart_outlined</i>
+                        </div>
+                        <div class="chart-metrics-row">
+                            <div class="metric-block">
+                                <span class="metric-val">120 წთ</span>
+                                <span class="metric-lbl">ამ კვირაში</span>
+                            </div>
+                            <div class="metric-block">
+                                <span class="metric-val">96%</span>
+                                <span class="metric-lbl">თანმიმდევრობა</span>
+                            </div>
+                        </div>
+                        <div class="static-chart-visual">
+                            <!-- Clean minimal CSS/SVG line chart representing weekly trend -->
+                            <svg viewBox="0 0 300 100" class="svg-line-chart">
+                                <defs>
+                                    <linearGradient id="chartGlow" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="0%" stop-color="#d3bcf7" stop-opacity="0.2" />
+                                        <stop offset="100%" stop-color="#d3bcf7" stop-opacity="0" />
+                                    </linearGradient>
+                                </defs>
+                                <path d="M 0 80 Q 50 60 100 70 T 200 30 T 300 10" fill="none" stroke="#d3bcf7" stroke-width="2" />
+                                <path d="M 0 80 Q 50 60 100 70 T 200 30 T 300 10 L 300 100 L 0 100 Z" fill="url(#chartGlow)" />
+                                <!-- Chart Dots -->
+                                <circle cx="100" cy="70" r="4" fill="#d3bcf7" />
+                                <circle cx="200" cy="30" r="4" fill="#ffaedd" />
+                            </svg>
+                            <div class="chart-labels-row">
+                                <span>ორშ</span>
+                                <span>ოთხ</span>
+                                <span>პარ</span>
+                                <span>კვ</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section with Side-by-Side Cards -->
+        <section class="pricing-section" id="pricing">
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-label">ტარიფები</p>
+                    <h2 class="section-title">აირჩიე შენი <br><span class="gradient-text">რიტმი</span></h2>
+                    <p class="section-subtitle">გაააქტიურე პრემიუმი და მიიღე სრული წვდომა ულიმიტო მედიტაციებზე, ძილის მელოდიებსა და ვიჯეტებზე.</p>
+                </div>
+
+                <div class="pricing-grid">
+                    <!-- Monthly Card -->
+                    <div class="paywall-card">
+                        <div class="paywall-glow"></div>
+                        <div class="paywall-inner">
+                            <div class="paywall-header">
+                                <span class="paywall-badge">✦ თვიური პრემიუმი</span>
+                                <div class="discount-badge">1 თვე</div>
+                            </div>
+
+                            <div class="paywall-price-container">
+                                <span class="paywall-price">₾7.99</span>
+                                <span class="paywall-period">/ თვე</span>
+                            </div>
+                            <p class="paywall-cancel-anytime">გაუქმება ნებისმიერ დროს</p>
+
+                            <div class="paywall-features">
+                                <div class="paywall-feat-item">
+                                    <i class="material-icons">done</i>
+                                    <span>სრული წვდომა 100+ მედიტაციაზე</span>
+                                </div>
+                                <div class="paywall-feat-item">
+                                    <i class="material-icons">done</i>
+                                    <span>ულიმიტო ძილის მუსიკა და ბგერები</span>
+                                </div>
+                                <div class="paywall-feat-item">
+                                    <i class="material-icons">done</i>
+                                    <span>პერსონალური სმარტფონის ვიჯეტები</span>
+                                </div>
+                                <div class="paywall-feat-item">
+                                    <i class="material-icons">done</i>
+                                    <span>დეტალური პროგრესის ანალიტიკა</span>
+                                </div>
+                            </div>
+
+                            <button class="btn btn-premium btn-full paywallSubmitBtn">
+                                <span>პრემიუმის გააქტიურება</span>
+                            </button>
+                            
+                            <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 14px; margin-bottom: 6px;">
+                                <div style="width: 38px; height: 24px; background: #ffffff; border-radius: 4px; display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 3px rgba(0,0,0,0.3);">
+                                    <img src="assets/images/visa.png" alt="Visa" style="width: 26px; height: 16px; object-fit: contain;" />
+                                </div>
+                                <div style="width: 38px; height: 24px; background: #ffffff; border-radius: 4px; display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 3px rgba(0,0,0,0.3);">
+                                    <img src="assets/images/mastercard.png" alt="Mastercard" style="width: 26px; height: 16px; object-fit: contain;" />
+                                </div>
+                                <span style="font-size: 11px; opacity: 0.5; color: #ffffff; font-family: inherit;">დაცული გადახდა</span>
+                            </div>
+
+                            <p class="paywall-footer-links">
+                                <a href="#">აქტივაციის აღდგენა</a>
+                                <span>•</span>
+                                <a href="#">პირობები</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Yearly Card (Highlighted) -->
+                    <div class="paywall-card featured">
+                        <div class="paywall-glow"></div>
+                        <div class="paywall-inner">
+                            <div class="paywall-header">
+                                <span class="paywall-badge">✦ წლიური პრემიუმი</span>
+                                <div class="discount-badge badge-save-large">დაზოგე 37%</div>
+                            </div>
+
+                            <div class="paywall-price-container">
+                                <span class="paywall-price">₾59.99</span>
+                                <span class="paywall-period">/ წელი</span>
+                            </div>
+                            <p class="paywall-cancel-anytime">თვეში გამოდის ~₾4.99</p>
+
+                            <div class="paywall-features">
+                                <div class="paywall-feat-item">
+                                    <i class="material-icons">done</i>
+                                    <span>სრული წვდომა 100+ მედიტაციაზე</span>
+                                </div>
+                                <div class="paywall-feat-item">
+                                    <i class="material-icons">done</i>
+                                    <span>ულიმიტო ძილის მუსიკა და ბგერები</span>
+                                </div>
+                                <div class="paywall-feat-item">
+                                    <i class="material-icons">done</i>
+                                    <span>პერსონალური სმარტფონის ვიჯეტები</span>
+                                </div>
+                                <div class="paywall-feat-item">
+                                    <i class="material-icons">done</i>
+                                    <span>დეტალური პროგრესის ანალიტიკა</span>
+                                </div>
+                            </div>
+
+                            <button class="btn btn-premium btn-full featured-btn paywallSubmitBtn">
+                                <span>წლიურის გააქტიურება</span>
+                            </button>
+                            
+                            <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 14px; margin-bottom: 6px;">
+                                <div style="width: 38px; height: 24px; background: #ffffff; border-radius: 4px; display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 3px rgba(0,0,0,0.3);">
+                                    <img src="assets/images/visa.png" alt="Visa" style="width: 26px; height: 16px; object-fit: contain;" />
+                                </div>
+                                <div style="width: 38px; height: 24px; background: #ffffff; border-radius: 4px; display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 3px rgba(0,0,0,0.3);">
+                                    <img src="assets/images/mastercard.png" alt="Mastercard" style="width: 26px; height: 16px; object-fit: contain;" />
+                                </div>
+                                <span style="font-size: 11px; opacity: 0.5; color: #ffffff; font-family: inherit;">დაცული გადახდა</span>
+                            </div>
+                            
+                            <p class="paywall-footer-links">
+                                <a href="#">აქტივაციის აღდგენა</a>
+                                <span>•</span>
+                                <a href="#">პირობები</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Symmetrical Cinematic Download Section -->
+        <section class="download-section" id="download">
+            <div class="container download-container">
+                <div class="download-portal">
+                    <div class="portal-circle portal-circle-1"></div>
+                    <div class="portal-circle portal-circle-2"></div>
+                    <div class="portal-circle portal-circle-3"></div>
+                    <div class="portal-lotus">
+                        <i class="material-icons">filter_vintage</i>
+                    </div>
+                </div>
+                <div class="download-content-centered">
+                    <h2 class="download-title">გადადგი ნაბიჯი სიმშვიდისკენ</h2>
+                    <p class="download-subtitle">შენი ყოველდღიური ციფრული თავშესაფარი მუდამ შენთანაა. ჩამოტვირთე LOTUS და დაიწყე მოგზაურობა დღესვე.</p>
+                    <div class="download-actions-premium">
+                        <a href="#" class="btn btn-store">
+                            <i class="material-icons">phone_android</i>
+                            <span>Google Play Store</span>
+                        </a>
+                        <a href="#" class="btn btn-store">
+                            <i class="material-icons">phone_iphone</i>
+                            <span>App Store</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Editorial Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <a href="#" class="footer-logo">
+                    <i class="material-icons logo-icon">filter_vintage</i>
+                    <span class="logo-text">LOTUS</span>
+                </a>
+                <p class="footer-brand-desc">შენი ყოველდღიური მენტალური თავშესაფარი.</p>
+            </div>
+            
+            <div class="footer-links-grid">
+                <div class="footer-links-col">
+                    <h4>აპლიკაცია</h4>
+                    <a href="#features">ფილოსოფია</a>
+                    <a href="#rhythm-section">რიტმი</a>
+                    <a href="#pricing">ტარიფები</a>
+                </div>
+                <div class="footer-links-col">
+                    <h4>სამართლებრივი</h4>
+                    <a href="admin.html">ადმინისტრაცია</a>
+                    <a href="#">წესები და პირობები</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container footer-bottom-container">
+                <p class="copyright">© 2026 LOTUS. ყველა უფლება დაცულია.</p>
+                <div class="social-links-minimal">
+                    <a href="#">Facebook</a>
+                    <a href="#">Instagram</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Success Notification -->
+    <div class="toast-notification" id="toastNotification">
+        <i class="material-icons toast-icon">stars</i>
+        <div class="toast-body">
+            <h4 class="toast-title">ლოტუსი აყვავდა!</h4>
+            <p class="toast-desc">სტრეიკი განახლდა 1 დღით.</p>
+        </div>
+    </div>
+
+    <!-- Application Script -->
+    <script src="app.js"></script>
+</body>
+</html>
