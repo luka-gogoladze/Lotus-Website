@@ -271,7 +271,6 @@ website/
 ├── index.html                   # მთავარი სემანტიკური HTML5 გვერდი
 ├── style.css                    # სრული CSS3 დიზაინის სისტემა და რესპონსივობა
 ├── app.js                       # Vanilla JavaScript ლოგიკა და ძრავები
-├── admin.html                   # პარამეტრების მართვის ადმინ პანელი
 ├── README.md                    # ვებსაიტის სრული ტექნიკური დოკუმენტაცია (ეს ფაილი)
 └── assets/
     ├── fonts/                   # BPG Nino Mtavruli შრიფტები
