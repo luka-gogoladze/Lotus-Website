@@ -312,7 +312,21 @@ a {
 .nav-logo {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
+}
+
+.logo-img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    border-radius: 6px;
+    filter: drop-shadow(0 0 8px rgba(211, 188, 247, 0.4));
+    transition: var(--transition-smooth);
+}
+
+.nav-logo:hover .logo-img,
+.footer-logo:hover .logo-img {
+    transform: scale(1.08);
 }
 
 .logo-icon {
@@ -1267,6 +1281,13 @@ a {
     font-size: 2.2rem !important;
     color: var(--primary);
     filter: drop-shadow(0 0 6px var(--primary-glow));
+}
+
+.portal-lotus-img {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px rgba(211, 188, 247, 0.5));
 }
 
 @keyframes pulseCircle {
