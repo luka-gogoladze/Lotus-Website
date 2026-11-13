@@ -35,12 +35,15 @@
             <nav class="nav-menu" id="navMenu">
                 <a href="#features" class="nav-link">ფილოსოფია</a>
                 <a href="#rhythm-section" class="nav-link">რიტმი</a>
+                <a href="#practices" class="nav-link">პრაქტიკები</a>
+                <a href="#breathing" class="nav-link">სუნთქვა</a>
                 <a href="#pricing" class="nav-link">ტარიფები</a>
+                <a href="#trial-form" class="nav-link">საცდელი პერიოდი</a>
             </nav>
 
             <div class="nav-actions">
-                <a href="#download" class="btn-minimal">ჩამოტვირთვა</a>
-                <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+                <a href="#trial-form" class="btn-minimal">უფასო ცდა</a>
+                <button class="menu-toggle" id="menuToggle" aria-label="მენიუს გახსნა">
                     <i class="material-icons">menu</i>
                 </button>
             </div>
@@ -61,11 +64,11 @@
                         მედიტაცია, სუნთქვა, ძილი. შექმენი შენი ყოველდღიური მენტალური ჰიგიენის რიტუალი და დაუბრუნდი შინაგან წონასწორობას.
                     </p>
                     <div class="hero-ctas">
-                        <a href="#download" class="btn btn-primary btn-glow">
+                        <a href="#trial-form" class="btn btn-primary btn-glow">
                             <span>დაიწყე მოგზაურობა</span>
                         </a>
-                        <a href="#rhythm-section" class="btn btn-secondary">
-                            <span>გაიგე მეტი</span>
+                        <a href="#practices" class="btn btn-secondary">
+                            <span>გაეცანი პრაქტიკებს</span>
                         </a>
                     </div>
                 </div>
@@ -297,6 +300,205 @@
             </div>
         </section>
 
+        <!-- Interactive Mindfulness Practices Slider Section -->
+        <section class="practices-section" id="practices" aria-label="პრაქტიკების სლაიდერი">
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-label">სავარჯიშოების კოლექცია</p>
+                    <h2 class="section-title">პოპულარული <br><span class="gradient-text">პრაქტიკები და მედიტაციები</span></h2>
+                    <p class="section-subtitle">გამოიკვლიე გონების სიმშვიდის მრავალფეროვანი გზამკვლევები. გადაფურცლე ან აირჩიე კატეგორია.</p>
+                </div>
+
+                <!-- Category Filters (interactive JS) -->
+                <div class="practice-filters" role="tablist" aria-label="პრაქტიკების კატეგორიები">
+                    <button class="filter-chip active" data-category="all" role="tab" aria-selected="true">ყველა</button>
+                    <button class="filter-chip" data-category="morning" role="tab" aria-selected="false">დილა</button>
+                    <button class="filter-chip" data-category="stress" role="tab" aria-selected="false">სტრესი</button>
+                    <button class="filter-chip" data-category="sleep" role="tab" aria-selected="false">ძილი</button>
+                    <button class="filter-chip" data-category="focus" role="tab" aria-selected="false">ფოკუსი</button>
+                </div>
+
+                <!-- Slider Component -->
+                <div class="slider-wrapper" id="practicesSliderWrapper">
+                    <button class="slider-nav-btn prev-btn" id="sliderPrevBtn" aria-label="წინა სლაიდი">
+                        <i class="material-icons">chevron_left</i>
+                    </button>
+
+                    <div class="slider-viewport" id="sliderViewport" tabindex="0" aria-roledescription="carousel" aria-label="მედიტაციის სესიები">
+                        <div class="slider-track" id="sliderTrack">
+                            <!-- Slide 1 -->
+                            <article class="practice-slide" data-category="morning" role="group" aria-roledescription="slide" aria-label="1 / 5">
+                                <div class="slide-card glass">
+                                    <div class="slide-badge morning">
+                                        <i class="material-icons">wb_sunny</i>
+                                        <span>დილა</span>
+                                    </div>
+                                    <span class="slide-duration"><i class="material-icons">schedule</i> 5 წთ</span>
+                                    <h3 class="slide-title">დილის გამოღვიძება & ენერგია</h3>
+                                    <p class="slide-desc">მოკლე, პოზიტიური სუნთქვითი მედიტაცია გონების გასააქტიურებლად და დღის თავდაჯერებულად დასაწყებად.</p>
+                                    <div class="slide-meta">
+                                        <div class="slide-author">
+                                            <i class="material-icons">record_voice_over</i>
+                                            <span>ელენე მ. (გიდი)</span>
+                                        </div>
+                                        <button class="btn-play-preview" data-title="დილის გამოღვიძება" aria-label="მოუსმინე დილის გამოღვიძებას">
+                                            <i class="material-icons">play_circle_filled</i>
+                                            <span>მოსმენა</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- Slide 2 -->
+                            <article class="practice-slide" data-category="stress" role="group" aria-roledescription="slide" aria-label="2 / 5">
+                                <div class="slide-card glass">
+                                    <div class="slide-badge stress">
+                                        <i class="material-icons">spa</i>
+                                        <span>სტრესი</span>
+                                    </div>
+                                    <span class="slide-duration"><i class="material-icons">schedule</i> 3 წთ</span>
+                                    <h3 class="slide-title">სტრესის მყისიერი მოხსნა</h3>
+                                    <p class="slide-desc">4-7-8 ტექნიკა და სხეულის სკანირება გულისცემის დასამშვიდებლად და შფოთვის გადასალახად.</p>
+                                    <div class="slide-meta">
+                                        <div class="slide-author">
+                                            <i class="material-icons">record_voice_over</i>
+                                            <span>გიორგი კ. (გიდი)</span>
+                                        </div>
+                                        <button class="btn-play-preview" data-title="სტრესის მყისიერი მოხსნა" aria-label="მოუსმინე სტრესის მოხსნას">
+                                            <i class="material-icons">play_circle_filled</i>
+                                            <span>მოსმენა</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- Slide 3 -->
+                            <article class="practice-slide" data-category="sleep" role="group" aria-roledescription="slide" aria-label="3 / 5">
+                                <div class="slide-card glass">
+                                    <div class="slide-badge sleep">
+                                        <i class="material-icons">nights_stay</i>
+                                        <span>ძილი</span>
+                                    </div>
+                                    <span class="slide-duration"><i class="material-icons">schedule</i> 20 წთ</span>
+                                    <h3 class="slide-title">ღრმა ძილის აკუსტიკა</h3>
+                                    <p class="slide-desc">წვიმის ბგერები და დელტა ტალღები, რომლებიც ეხმარება ტვინს სწრაფად გადავიდეს ღრმა რელაქსაციის ფაზაში.</p>
+                                    <div class="slide-meta">
+                                        <div class="slide-author">
+                                            <i class="material-icons">record_voice_over</i>
+                                            <span>ანა ლ. (ხმა)</span>
+                                        </div>
+                                        <button class="btn-play-preview" data-title="ღრმა ძილის აკუსტიკა" aria-label="მოუსმინე ღრმა ძილის აკუსტიკას">
+                                            <i class="material-icons">play_circle_filled</i>
+                                            <span>მოსმენა</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- Slide 4 -->
+                            <article class="practice-slide" data-category="focus" role="group" aria-roledescription="slide" aria-label="4 / 5">
+                                <div class="slide-card glass">
+                                    <div class="slide-badge focus">
+                                        <i class="material-icons">center_focus_strong</i>
+                                        <span>ფოკუსი</span>
+                                    </div>
+                                    <span class="slide-duration"><i class="material-icons">schedule</i> 10 წთ</span>
+                                    <h3 class="slide-title">გონებრივი კონცენტრაცია</h3>
+                                    <p class="slide-desc">ალფა-ტალღების თანხლებით გაზრდილი პროდუქტიულობა და სამუშაო გადაღლილობის მყისიერი განტვირთვა.</p>
+                                    <div class="slide-meta">
+                                        <div class="slide-author">
+                                            <i class="material-icons">record_voice_over</i>
+                                            <span>დავით ს. (გიდი)</span>
+                                        </div>
+                                        <button class="btn-play-preview" data-title="გონებრივი კონცენტრაცია" aria-label="მოუსმინე გონებრივ კონცენტრაციას">
+                                            <i class="material-icons">play_circle_filled</i>
+                                            <span>მოსმენა</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- Slide 5 -->
+                            <article class="practice-slide" data-category="stress" role="group" aria-roledescription="slide" aria-label="5 / 5">
+                                <div class="slide-card glass">
+                                    <div class="slide-badge stress">
+                                        <i class="material-icons">self_improvement</i>
+                                        <span>ბალანსი</span>
+                                    </div>
+                                    <span class="slide-duration"><i class="material-icons">schedule</i> 7 წთ</span>
+                                    <h3 class="slide-title">მადლიერების რიტუალი</h3>
+                                    <p class="slide-desc">შინაგანი მშვიდობის განცდა და ემოციური სტაბილიზაცია დღის პოზიტიურ მომენტებზე ფოკუსირებით.</p>
+                                    <div class="slide-meta">
+                                        <div class="slide-author">
+                                            <i class="material-icons">record_voice_over</i>
+                                            <span>მარიამ რ. (გიდი)</span>
+                                        </div>
+                                        <button class="btn-play-preview" data-title="მადლიერების რიტუალი" aria-label="მოუსმინე მადლიერების რიტუალს">
+                                            <i class="material-icons">play_circle_filled</i>
+                                            <span>მოსმენა</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+
+                    <button class="slider-nav-btn next-btn" id="sliderNextBtn" aria-label="შემდეგი სლაიდი">
+                        <i class="material-icons">chevron_right</i>
+                    </button>
+                </div>
+
+                <!-- Pagination Dots & Status -->
+                <div class="slider-footer">
+                    <div class="slider-dots" id="sliderDots" role="tablist" aria-label="სლაიდერის ინდიკატორები"></div>
+                    <div class="slider-status" id="sliderStatus" aria-live="polite">სლაიდი 1 / 5</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Breathing Ritual Widget Section -->
+        <section class="breathing-section" id="breathing" aria-label="სუნთქვის ინტერაქტიული რიტუალი">
+            <div class="container breathing-container">
+                <div class="breathing-content">
+                    <p class="section-label">ინტერაქტიული პრაქტიკა</p>
+                    <h2 class="section-title">სცადე ახლავე — <br><span class="gradient-text">1-წუთიანი სუნთქვა</span></h2>
+                    <p class="section-subtitle">
+                        დააჭირე დაწყებას და მიჰყევი წრის რიტმს. 4-4-4 კვადრატული სუნთქვა წამებში ამშვიდებს ავტონომიურ ნერვულ სისტემას.
+                    </p>
+
+                    <div class="breathing-steps-list">
+                        <div class="b-step"><span class="b-step-num">1</span> <strong>ჩაისუნთქე</strong> 4 წამი ნაზად ცხვირით</div>
+                        <div class="b-step"><span class="b-step-num">2</span> <strong>შეიკავე</strong> სუნთქვა 4 წამი</div>
+                        <div class="b-step"><span class="b-step-num">3</span> <strong>ამოისუნთქე</strong> 4 წამი პირით სრულად</div>
+                        <div class="b-step"><span class="b-step-num">4</span> <strong>შეიკავე</strong> 4 წამი შემდეგ ციკლამდე</div>
+                    </div>
+
+                    <div class="breathing-actions">
+                        <button class="btn btn-primary" id="startBreathingBtn">
+                            <i class="material-icons">play_arrow</i>
+                            <span>დაიწყე სუნთქვა</span>
+                        </button>
+                        <button class="btn btn-secondary" id="stopBreathingBtn" style="display: none;">
+                            <i class="material-icons">stop</i>
+                            <span>შეჩერება</span>
+                        </button>
+                        <div class="breathing-cycle-badge" id="breathingCycleBadge">ციკლი: 0 / 4</div>
+                    </div>
+                </div>
+
+                <div class="breathing-widget-display">
+                    <div class="breathing-orb-wrapper">
+                        <div class="breathing-pulse-aura" id="breathingAura"></div>
+                        <div class="breathing-orb" id="breathingOrb">
+                            <div class="breathing-phase-text" id="breathingPhase">მზად ხარ?</div>
+                            <div class="breathing-timer-count" id="breathingTimer">4</div>
+                            <div class="breathing-subtext" id="breathingSubtext">დააჭირე დაწყებას</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Pricing Section with Side-by-Side Cards -->
         <section class="pricing-section" id="pricing">
             <div class="container">
@@ -341,7 +543,7 @@
                                 </div>
                             </div>
 
-                            <button class="btn btn-premium btn-full paywallSubmitBtn">
+                            <button class="btn btn-premium btn-full paywallSubmitBtn" data-plan="monthly" data-plan-name="თვიური პრემიუმი" data-plan-price="₾7.99 / თვე">
                                 <span>პრემიუმის გააქტიურება</span>
                             </button>
                             
@@ -397,7 +599,7 @@
                                 </div>
                             </div>
 
-                            <button class="btn btn-premium btn-full featured-btn paywallSubmitBtn">
+                            <button class="btn btn-premium btn-full featured-btn paywallSubmitBtn" data-plan="yearly" data-plan-name="წლიური პრემიუმი" data-plan-price="₾59.99 / წელი">
                                 <span>წლიურის გააქტიურება</span>
                             </button>
                             
@@ -418,6 +620,173 @@
                             </p>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Free Trial & Contact Form Section -->
+        <section class="trial-section" id="trial-form" aria-label="საცდელი პერიოდის რეგისტრაცია">
+            <div class="container trial-layout">
+                <div class="trial-info-panel">
+                    <p class="section-label">დაიწყე უფასოდ</p>
+                    <h2 class="section-title">შენი 7-დღიანი <br><span class="gradient-text">საცდელი პერიოდი</span></h2>
+                    <p class="section-subtitle">
+                        დარეგისტრირდი მარტივად და გამოსცადე LOTUS-ის სრული პოტენციალი ყოველგვარი წინასწარი გადასახადის გარეშე.
+                    </p>
+
+                    <div class="trial-perks-list">
+                        <div class="perk-item">
+                            <i class="material-icons perk-icon">verified</i>
+                            <div>
+                                <h4>100+ ქართულენოვანი მედიტაცია</h4>
+                                <p>სრული შეუზღუდავი ბიბლიოთეკა ნებისმიერი განწყობისთვის.</p>
+                            </div>
+                        </div>
+                        <div class="perk-item">
+                            <i class="material-icons perk-icon">lock_open</i>
+                            <div>
+                                <h4>სრული წვდომა ბარათის გარეშე</h4>
+                                <p>საცდელ პერიოდში საბანკო ბარათის მითითება არ არის საჭირო.</p>
+                            </div>
+                        </div>
+                        <div class="perk-item">
+                            <i class="material-icons perk-icon">insights</i>
+                            <div>
+                                <h4>პერსონალური პროგრესის ანალიტიკა</h4>
+                                <p>აკონტროლე შენი მენტალური ჯანმრთელობის დინამიკა ყოველდღიურად.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Accordion (Interactive JS component) -->
+                    <div class="faq-container">
+                        <h4 class="faq-header-title">ხშირად დასმული კითხვები</h4>
+                        <div class="faq-item">
+                            <button class="faq-question" type="button" aria-expanded="false">
+                                <span>როგორ აქტიურდება 7-დღიანი უფასო პერიოდი?</span>
+                                <i class="material-icons faq-arrow">expand_more</i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>ფორმის შევსებისთანავე თქვენს ელფოსტაზე მიიღებთ აქტივაციის ერთჯერად კოდს, რომელსაც შეიყვანთ LOTUS აპლიკაციაში და მყისიერად გახსნით ყველა პრემიუმ ფუნქციას.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question" type="button" aria-expanded="false">
+                                <span>დამჭირდება თუ არა საბანკო ბარათი?</span>
+                                <i class="material-icons faq-arrow">expand_more</i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>არა, საცდელი პერიოდის გასააქტიურებლად ბარათის მონაცემების შეყვანა სავალდებულო არ არის.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question" type="button" aria-expanded="false">
+                                <span>შესაძლებელია თუ არა პრაქტიკების ოფლაინ მოსმენა?</span>
+                                <i class="material-icons faq-arrow">expand_more</i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>დიახ, საყვარელი მედიტაციებისა და ძილის აკუსტიკური ჩანაწერების გადმოწერა შესაძლებელია აპლიკაციაში ოფლაინ რეჟიმისთვის.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Registration Form with Client-Side Validation -->
+                <div class="trial-form-card glass">
+                    <div class="form-badge">✦ სწრაფი რეგისტრაცია</div>
+                    <h3 class="form-title">შეავსე ფორმა</h3>
+                    <p class="form-sub">გთხოვთ შეავსოთ სავალდებულო ველები ვალიდური ინფორმაციით.</p>
+
+                    <form id="registrationForm" novalidate>
+                        <!-- Full Name -->
+                        <div class="form-group">
+                            <label for="fullName" class="form-label">სრული სახელი <span class="req">*</span></label>
+                            <div class="input-wrapper">
+                                <i class="material-icons input-icon">person</i>
+                                <input type="text" id="fullName" name="fullName" class="form-input" placeholder="მაგ. ლუკა გიორგაძე" required autocomplete="name">
+                            </div>
+                            <span class="field-error" id="nameError" aria-live="polite"></span>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="form-group">
+                            <label for="email" class="form-label">ელფოსტა <span class="req">*</span></label>
+                            <div class="input-wrapper">
+                                <i class="material-icons input-icon">mail_outline</i>
+                                <input type="email" id="email" name="email" class="form-input" placeholder="name@example.com" required autocomplete="email">
+                            </div>
+                            <span class="field-error" id="emailError" aria-live="polite"></span>
+                        </div>
+
+                        <!-- Phone -->
+                        <div class="form-group">
+                            <label for="phone" class="form-label">ტელეფონის ნომერი <span class="req">*</span></label>
+                            <div class="input-wrapper">
+                                <i class="material-icons input-icon">phone</i>
+                                <input type="tel" id="phone" name="phone" class="form-input" placeholder="599 00 00 00" required autocomplete="tel">
+                            </div>
+                            <span class="field-error" id="phoneError" aria-live="polite"></span>
+                        </div>
+
+                        <!-- Main Goal Dropdown -->
+                        <div class="form-group">
+                            <label for="primaryGoal" class="form-label">მთავარი მიზანი <span class="req">*</span></label>
+                            <div class="input-wrapper select-wrapper">
+                                <i class="material-icons input-icon">track_changes</i>
+                                <select id="primaryGoal" name="primaryGoal" class="form-input form-select" required>
+                                    <option value="" disabled selected>აირჩიე შენი მიზანი...</option>
+                                    <option value="stress">სტრესისა და შფოთვის შემცირება</option>
+                                    <option value="sleep">ღრმა და ხარისხიანი ძილი</option>
+                                    <option value="focus">ფოკუსისა და კონცენტრაციის გაზრდა</option>
+                                    <option value="habit">ყოველდღიური მედიტაციის ჩვევა</option>
+                                </select>
+                            </div>
+                            <span class="field-error" id="goalError" aria-live="polite"></span>
+                        </div>
+
+                        <!-- Experience Level Radio -->
+                        <div class="form-group">
+                            <span class="form-label">გამოცდილების დონე</span>
+                            <div class="radio-pill-group">
+                                <label class="radio-pill">
+                                    <input type="radio" name="experience" value="beginner" checked>
+                                    <span>დამწყები</span>
+                                </label>
+                                <label class="radio-pill">
+                                    <input type="radio" name="experience" value="intermediate">
+                                    <span>საშუალო</span>
+                                </label>
+                                <label class="radio-pill">
+                                    <input type="radio" name="experience" value="advanced">
+                                    <span>გამოცდილი</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Message / Note -->
+                        <div class="form-group">
+                            <label for="userMessage" class="form-label">შენიშვნა ან მოლოდინი (სურვილისამებრ)</label>
+                            <div class="input-wrapper">
+                                <textarea id="userMessage" name="userMessage" class="form-input form-textarea" rows="3" placeholder="რაიმე განსაკუთრებული მოლოდინი ხომ არ გაქვს?"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Terms Checkbox -->
+                        <div class="form-group form-check-group">
+                            <label class="custom-checkbox-label">
+                                <input type="checkbox" id="termsCheck" name="termsCheck" required>
+                                <span class="custom-checkbox"></span>
+                                <span class="check-text">ვეთანხმები <a href="#" class="inline-link">წესებსა და პირობებს</a> და მონაცემთა დამუშავებას.</span>
+                            </label>
+                            <span class="field-error" id="termsError" aria-live="polite"></span>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary btn-full" id="submitFormBtn">
+                            <i class="material-icons">send</i>
+                            <span>საცდელი პერიოდის გააქტიურება</span>
+                        </button>
+                    </form>
                 </div>
             </div>
         </section>
@@ -493,6 +862,36 @@
         <div class="toast-body">
             <h4 class="toast-title">ლოტუსი აყვავდა!</h4>
             <p class="toast-desc">სტრეიკი განახლდა 1 დღით.</p>
+        </div>
+    </div>
+
+    <!-- Interactive Plan Selection Modal -->
+    <div class="modal-backdrop" id="planModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" style="display: none;">
+        <div class="modal-card glass">
+            <button class="modal-close-btn" id="closeModalBtn" aria-label="მოდალის დახურვა">
+                <i class="material-icons">close</i>
+            </button>
+            <div class="modal-header">
+                <div class="modal-icon-badge">
+                    <i class="material-icons">workspace_premium</i>
+                </div>
+                <h3 class="modal-title" id="modalTitle">პრემიუმის გააქტიურება</h3>
+                <p class="modal-desc" id="modalPlanDesc">არჩეულია: წლიური პრემიუმი (37% დაზოგვა)</p>
+            </div>
+            <div class="modal-body">
+                <div class="modal-plan-summary">
+                    <div class="summary-row">
+                        <span id="modalPlanName">წლიური პრემიუმი</span>
+                        <span class="summary-price" id="modalPlanPrice">₾59.99</span>
+                    </div>
+                    <div class="summary-note">ულიმიტო წვდომა 100+ მედიტაციაზე, ძილის აკუსტიკასა და ვიჯეტებზე.</div>
+                </div>
+                <div class="modal-actions">
+                    <a href="#trial-form" class="btn btn-primary btn-full" id="modalProceedBtn">
+                        <span>გადასვლა საცდელ რეგისტრაციაზე</span>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 
